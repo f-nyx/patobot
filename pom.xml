@@ -175,4 +175,19 @@
             <url>https://jitpack.io</url>
         </repository>
     </repositories>
+
+    <!-- SCM -->
+    <scm>
+        <connection>scm:git:git@git.rlab.be:seykron/patobot.git</connection>
+        <developerConnection>scm:git:git@git.rlab.be:seykron/patobot.git</developerConnection>
+        <url>https://git.rlab.be/seykron/patobot</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>internal</id>
+            <url>file://${MVN_LOCAL_REPO}</url>
+        </repository>
+    </distributionManagement>
 </project>
