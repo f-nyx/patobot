@@ -170,7 +170,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>registry.rlab.be/seykron/patobot</repository>
+                    <repository>seykron/patobot</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}-jar-with-dependencies.jar</JAR_FILE>
