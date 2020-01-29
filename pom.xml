@@ -5,7 +5,7 @@
     <groupId>be.rlab</groupId>
     <artifactId>patobot</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <!-- Maven -->
@@ -22,8 +22,31 @@
         <kotlin-coroutines.version>1.3.2</kotlin-coroutines.version>
         <kotlin.code.style>official</kotlin.code.style>
 
-        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+        <dockerfile-maven-version>1.4.10</dockerfile-maven-version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>GPL Version 2.0</name>
+            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+            <distribution>repo</distribution>
+            <comments>Free Software License</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>nyx</id>
+            <name>nyx</name>
+            <email>dnyx@riseup.net</email>
+            <organization>R'lyeh Hacklab</organization>
+            <organizationUrl>https://rlab.be</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>America/Argentina/Buenos_Aires</timezone>
+        </developer>
+    </developers>
 
     <dependencies>
         <!-- Kotlin -->
@@ -181,7 +204,7 @@
         <connection>scm:git:git@git.rlab.be:seykron/patobot.git</connection>
         <developerConnection>scm:git:git@git.rlab.be:seykron/patobot.git</developerConnection>
         <url>https://git.rlab.be/seykron/patobot</url>
-        <tag>HEAD</tag>
+        <tag>patobot-1.0.0</tag>
     </scm>
 
     <distributionManagement>
