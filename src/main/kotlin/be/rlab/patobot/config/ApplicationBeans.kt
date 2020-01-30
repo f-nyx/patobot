@@ -1,6 +1,7 @@
 package be.rlab.patobot.config
 
 import be.rlab.patobot.command.Monitor
+import be.rlab.patobot.command.Players
 import be.rlab.patobot.command.Ranking
 import be.rlab.patobot.domain.PlayersService
 import be.rlab.patobot.domain.RankingMonitor
@@ -16,6 +17,7 @@ object ApplicationBeans {
         // Listeners
         bean<Monitor>()
         bean<Ranking>()
+        bean<Players>()
 
         bean<PlayersService>()
         bean {

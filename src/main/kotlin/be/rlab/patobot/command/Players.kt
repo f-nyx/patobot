@@ -8,13 +8,12 @@ import be.rlab.tehanu.messages.TextTrigger.Companion.CONTAINS
 import be.rlab.tehanu.messages.TextTrigger.Companion.NORMALIZE
 
 @MessageListener("ranking")
-class Ranking(
+class Players(
     private val playersService: PlayersService
 ) {
 
     companion object {
         const val SEARCH: String = "searching"
-        const val DISPLAY_LEADERBOARD: String = "displayLeaderBoard"
     }
 
     @Handler
@@ -23,22 +22,22 @@ class Ranking(
             TriggerParam(CONTAINS, "@patobot", "@US034S5TQ")
         ]),
         Trigger([
-            TriggerParam(CONTAINS, "venimos", "vamos", "viene", "está", "va", "mostra", "decime"),
+            TriggerParam(CONTAINS, "lista"),
             TriggerParam(NORMALIZE, "true")
         ]),
         Trigger([
-            TriggerParam(CONTAINS, "ranking", "tabla", "posiciones", "torneo", "ganar"),
+            TriggerParam(CONTAINS, "jugadores", "participantes", "inscriptas"),
             TriggerParam(NORMALIZE, "true")
         ])
     )
-    fun showRanking(context: MessageContext): MessageContext = with(context) {
+    fun showPlayers(context: MessageContext): MessageContext = with(context) {
         talk(messages[SEARCH])
-        val players: List<Player> = playersService.listPlayers()
-        val leaderBoard: String = players.subList(0, 10).mapIndexed{ index, player ->
-            "${index + 1} - ${player.name}"
-        }.joinToString("\n")
+        val players: List<Player> = playersService.listPlayers().sortedBy { player ->
+            player.name.toLowerCase()
+        }
 
-        talk(messages[DISPLAY_LEADERBOARD])
-        talk(leaderBoard)
+        talk(players.joinToString("\n") { player ->
+            player.name
+        })
     }
 }

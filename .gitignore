@@ -36,3 +36,5 @@ tehanu.json
 /env
 /db
 test_db.trace.db
+/.env
+/patobot-db

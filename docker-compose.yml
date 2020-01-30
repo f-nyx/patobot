@@ -1,7 +1,7 @@
 version: '3'
 services:
-  cerberus:
-    image: registry.rlab.be/seykron/patobot:1.1.0
+  patobot:
+    image: seykron/patobot:1.0.0-SNAPSHOT
     restart: unless-stopped
     depends_on:
       - h2
