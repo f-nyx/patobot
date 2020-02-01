@@ -5,6 +5,8 @@ import be.rlab.patobot.domain.model.Subscription
 import be.rlab.tehanu.messages.Client
 import be.rlab.tehanu.messages.model.Chat
 import be.rlab.tehanu.store.Memory
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import kotlin.concurrent.timer
 
 class RankingMonitor(
@@ -19,16 +21,21 @@ class RankingMonitor(
         private const val SUBSCRIPTIONS_SLOT: String = "monitor::subscriptions"
     }
 
+    private val logger: Logger = LoggerFactory.getLogger(RankingMonitor::class.java)
     private var ranking: List<Player> = emptyList()
     private var subscriptions: List<Subscription> by memory.slot(SUBSCRIPTIONS_SLOT, listOf<Subscription>())
 
     fun start() = timer(TIMER_NAME, daemon = true, period = PERIOD) {
-        val players = playersService.listPlayers()
+        try {
+            val players = playersService.listPlayers()
 
-        if (ranking.isEmpty()) {
-            ranking = players
-        } else {
-            checkChanges(players)
+            if (ranking.isEmpty()) {
+                ranking = players
+            } else {
+                checkChanges(players)
+            }
+        } catch (cause: Exception) {
+            logger.error("error verifying players", cause)
         }
     }
 
